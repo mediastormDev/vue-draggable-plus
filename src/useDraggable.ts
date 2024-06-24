@@ -1,4 +1,8 @@
-import Sortable, { type Options, type SortableEvent } from 'sortablejs'
+import Sortable, {
+  type Options,
+  type SortableEvent,
+  AutoScroll
+} from 'sortablejs'
 import {
   getCurrentInstance,
   isRef,
@@ -226,6 +230,7 @@ export function useDraggable<T>(...args: any[]): UseDraggableReturn {
     target = getTarget(target)
     if (instance) methods.destroy()
 
+    Sortable.mount(new AutoScroll())
     instance = new Sortable(target as HTMLElement, mergeOptions())
   }
 
